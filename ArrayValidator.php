@@ -12,4 +12,12 @@
         {
             $this->array = $array;
         }
+
+        /**
+         * @return bool
+         */
+        public function arrayOnlyContainsIntegers(): bool
+        {
+            return array_filter($this->array, 'is_int') === $this->array;
+        }
     }
