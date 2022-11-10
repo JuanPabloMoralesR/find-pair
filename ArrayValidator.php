@@ -39,5 +39,14 @@
             return count($this->array) === count(array_flip($this->array));
         }
 
+        /**
+         * @return bool
+         */
+        public function isValid(): bool
+        {
+            return $this->arrayOnlyContainsIntegers() && $this->arrayValuesArePositive()
+                && $this->arrayHasUniqueValues();
+        }
+
     }
 
