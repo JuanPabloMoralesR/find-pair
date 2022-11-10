@@ -43,6 +43,7 @@
             if (!$this->arrayValidator->isValid()) {
                 return null;
             }
+            sort($this->entries);
             $pairs = [];
             foreach ($this->entries as $entry)
             {
@@ -57,7 +58,7 @@
                 }
             }
 
-            return $pairs;
+            return $pairs[0] ?? null;
         }
 
         /**
