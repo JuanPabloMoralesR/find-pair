@@ -53,7 +53,7 @@
                 $valueToLookFor = $this->desiredSum - $entry;
                 $valueIndexInEntries = array_search($valueToLookFor, $this->entries);
 
-                if ($valueIndexInEntries !== false) {
+                if ($valueIndexInEntries !== false && !count($pairs)) {
                     $pairs[] = [$entry, $this->entries[$valueIndexInEntries]];
                 }
             }
