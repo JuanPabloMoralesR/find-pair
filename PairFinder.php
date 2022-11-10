@@ -37,6 +37,20 @@
             if (!$this->arrayValidator->isValid()) {
                 return null;
             }
+            return [];
+        }
+
+        /**
+         * This solution is not optimal mainly because it needs to loop the entire array twice,
+         * so time complexity would be O(n2)
+         *
+         * @return array|null
+         */
+        public function findByBruteForce(): ?array
+        {
+            if (!$this->arrayValidator->isValid()) {
+                return null;
+            }
             $pairs = [];
 
             for($i = 0; $i < count($this->entries); $i ++){
