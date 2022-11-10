@@ -30,6 +30,11 @@
         }
 
         /**
+         * We are improving the time complexity by just taking the $desiredNum and subtract each entry of
+         * the array, the result will be a number that if you add the entry we will get the desired value,
+         * so we will check if that number is in the array. Note that if the entry is bigger than the desired sum,
+         * we don't have to do this process since all values in the array are positive.
+         *
          * @return array|null
          */
         public function find(): ?array
@@ -37,7 +42,20 @@
             if (!$this->arrayValidator->isValid()) {
                 return null;
             }
-            return [];
+            $pairs = [];
+            foreach ($this->entries as $entry)
+            {
+                if ($entry > $this->desiredSum)
+                    continue;
+
+                $valueToLookFor = $entry - $this->desiredSum;
+                $valueIndexInEntries = array_search($valueToLookFor, $this->entries);
+                if ($valueToLookFor !== false) {
+                    $pairs[] = [$entry, $this->entries[$valueIndexInEntries]];
+                }
+            }
+
+            return $pairs;
         }
 
         /**
