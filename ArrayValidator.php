@@ -19,7 +19,7 @@
         public function arrayOnlyContainsIntegers(): bool
         {
             return array_filter($this->array, function ($el) {
-                return (int) $el === $el;
+                return filter_var($el, FILTER_VALIDATE_INT) !== false;
             }) === $this->array;
         }
 
