@@ -49,8 +49,9 @@
                 if ($entry > $this->desiredSum)
                     continue;
 
-                $valueToLookFor = $entry - $this->desiredSum;
+                $valueToLookFor = $this->desiredSum - $entry;
                 $valueIndexInEntries = array_search($valueToLookFor, $this->entries);
+
                 if ($valueToLookFor !== false) {
                     $pairs[] = [$entry, $this->entries[$valueIndexInEntries]];
                 }
