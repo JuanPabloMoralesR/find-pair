@@ -18,7 +18,9 @@
          */
         public function arrayOnlyContainsIntegers(): bool
         {
-            return array_filter($this->array, 'is_int') === $this->array;
+            return array_filter($this->array, function ($el) {
+                return (int) $el === $el;
+            }) === $this->array;
         }
 
         /**
